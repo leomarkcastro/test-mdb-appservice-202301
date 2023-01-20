@@ -1,10 +1,9 @@
-exports = function({ query, headers, body}, response) {
+exports = function ({ query, headers, body }, response) {
+  const result = context.services
+    .get("mongodb-atlas")
+    .db("examples")
+    .collection("notes")
+    .insertOne(JSON.parse(body.text()));
 
-    const result = context.services
-      .get("mongodb-atlas")
-      .db("examples")
-      .collection("notes")
-      .insertOne(JSON.parse(body.text()));
-
-    return  result;
+  return result;
 };
