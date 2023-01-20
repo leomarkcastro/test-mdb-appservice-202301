@@ -3,7 +3,7 @@ exports = function ({ query, headers, body }, response) {
     .get("mongodb-atlas")
     .db("examples")
     .collection("notes")
-    .insertOne({ ...JSON.parse(body.text()), ...query });
+    .insertOne(JSON.parse(body.text()));
 
   return result;
 };
